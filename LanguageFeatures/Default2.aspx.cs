@@ -22,7 +22,17 @@ public partial class LanguageFeatures_Default2 : System.Web.UI.Page
                 new Product {Name = "Corner flag", Category = "Soccer", Price = 34.95M}
             }
         };
-        decimal total = products.FilterByCategory("Soccer").TotalPrices();
+  //      decimal total = products.FilterByCategory("Soccer").TotalPrices();
+        Func<Product, bool> categoryFilter = delegate(Product product) {
+            return product.Category == "Soccer";
+        };
+        //replace delegate definition using lambda expression
+        Func<Product, bool> categoryFilter1 = product => product.Category == "Watersports";
+        decimal total = products.Filter(categoryFilter).TotalPrices();
+        //more explicitly, we can use lambda expression directly in Filter method
+        decimal total1 = products.Filter(product => product.Category == "Soccer").TotalPrices();
+        //we can even use multiple conditions in the Filter
+        decimal total2 = products.Filter(product => product.Category == "Soccer" || product.Price > 20).TotalPrices();
         return String.Format("Soccer Total: {0:c}", total);
     }
 }
