@@ -24,5 +24,14 @@
             } %>
         </tbody>
     </table>
+    <h3>People Who Will Not Attend</h3>
+    <table>
+        <thead>
+            <tr><th>Name</th><th>Email</th><th>Phone</th></tr>
+        </thead>
+        <tbody>
+            <%= GetNoShowHtml() %>
+        </tbody>
+    </table>
 </body>
 </html>
