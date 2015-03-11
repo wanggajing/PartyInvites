@@ -21,4 +21,17 @@ public static class MyExtensionMethods
         }
         return total;
     }
+    //The last thing we want to show you about extension methods is that they can be used to filter collections of objects.
+//An extension method that operates on an IEnumerable<T> and that also returns an IEnumerable<T> can use the
+//yield keyword to apply selection criteria to items in the source data to produce a reduced set of results.
+    public static IEnumerable<Product> FilterByCategory(this IEnumerable<Product> productEnum, string categoryParam)
+    {
+        foreach (Product prod in productEnum)
+        {
+            if (prod.Category == categoryParam)
+            {   
+                yield return prod;
+            }
+        }
+    }
 }
