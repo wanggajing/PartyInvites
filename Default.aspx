@@ -13,6 +13,7 @@
             <h1>New Year's Eve at Jacqui's!</h1>
             <p>We're going to have an exciting party. And you're invited!</p>
         </div>
+        <asp:ValidationSummary ID="validationSummary" runat="server" ShowModelStateErrors="true" />
         <%-- The reason for this problem is that ASP.NET only looks for elements that have the runat attribute with a value of
 server when processing Web Form files. All other elements are ignored and since our input and select elements in
 the Default.aspx file don’t have this attribute/value combination, the model binding process isn’t able to find the
