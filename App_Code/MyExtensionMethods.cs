@@ -34,4 +34,17 @@ public static class MyExtensionMethods
             }
         }
     }
+
+    //We can use a delegate to make our FilterByCategory method more general. That way, the delegate that will be
+//invoked against each Product can filter the objects in any way we choose
+    public static IEnumerable<Product> Filter(this IEnumerable<Product> productEnum, Func<Product, bool> selectorParam)
+    {
+        foreach (Product prod in productEnum)
+        {
+            if (selectorParam(prod))
+            {
+                yield return prod;
+            }
+        }
+    }
 }
