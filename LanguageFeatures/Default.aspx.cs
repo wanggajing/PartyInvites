@@ -53,8 +53,18 @@ public partial class LanguageFeatures_Default : System.Web.UI.Page
                 Category = "freww"
             },
         };
-
-
-        return String.Format("Category: {0}", myProduct.Category);        
+        // code which utilize extension method
+        ShoppingCart cart = new ShoppingCart
+        {
+            Products = new List<Product> {
+                new Product {Name = "Kayak", Price = 275M},
+                new Product {Name = "Lifejacket", Price = 48.95M},
+                new Product {Name = "Soccer ball", Price = 19.50M},
+                new Product {Name = "Corner flag", Price = 34.95M}
+            }
+        };
+        decimal cartTotal = cart.TotalPrices();
+        return String.Format("Total: {0:c}", cartTotal);
+     //   return String.Format("Category: {0}", myProduct.Category);        
     }
 }
