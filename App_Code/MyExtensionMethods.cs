@@ -12,10 +12,10 @@ public static class MyExtensionMethods
 //class, but we can’t modify the class itself, perhaps because it comes from a third party and we don’t have the source
 //code. We can use an extension method to get the functionality we need.
     //extension method
-    public static decimal TotalPrices(this ShoppingCart cartParam)
+    public static decimal TotalPrices(this IEnumerable<Product> productEnum)
     {
         decimal total = 0;
-        foreach (Product prod in cartParam.Products)
+        foreach (Product prod in productEnum)
         {
             total += prod.Price;
         }

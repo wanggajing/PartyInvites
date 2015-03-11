@@ -36,6 +36,7 @@ public partial class LanguageFeatures_Default : System.Web.UI.Page
         Dictionary<string, int> myDict = new Dictionary<string, int> {
             { "apple", 10 }, { "orange", 20 }, { "plum", 30 }
         };
+        /*
         List<Product> products = new List<Product>
         {
             new Product{
@@ -53,6 +54,7 @@ public partial class LanguageFeatures_Default : System.Web.UI.Page
                 Category = "freww"
             },
         };
+         */ 
         // code which utilize extension method
         ShoppingCart cart = new ShoppingCart
         {
@@ -63,8 +65,28 @@ public partial class LanguageFeatures_Default : System.Web.UI.Page
                 new Product {Name = "Corner flag", Price = 34.95M}
             }
         };
-        decimal cartTotal = cart.TotalPrices();
-        return String.Format("Total: {0:c}", cartTotal);
+ //       decimal cartTotal = cart.TotalPrices();
+
+        IEnumerable<Product> products = new ShoppingCart
+        {
+            Products = new List<Product> {
+                new Product {Name = "Kayak", Price = 275M},
+                new Product {Name = "Lifejacket", Price = 48.95M},
+                new Product {Name = "Soccer ball", Price = 19.50M},
+                new Product {Name = "Corner flag", Price = 34.95M}
+            }
+        };
+        Product[] productArray = {
+            new Product {Name = "Kayak", Price = 274M},
+            new Product {Name = "Lifejacket", Price = 48.95M},
+            new Product {Name = "Soccer ball", Price = 19.50M},
+            new Product {Name = "Corner flag", Price = 34.95M}
+        };
+        decimal cartTotal = products.TotalPrices();
+        decimal arrayTotal = productArray.TotalPrices();
+        return String.Format("Cart Total: {0:c}, Array Total: {1:c}",
+        cartTotal, arrayTotal);
+       // return String.Format("Total: {0:c}", cartTotal);
      //   return String.Format("Category: {0}", myProduct.Category);        
     }
 }
