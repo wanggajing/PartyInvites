@@ -21,6 +21,10 @@ public partial class EssentialTools_Default : System.Web.UI.Page
             if (TryUpdateModel(dataObject,
             new FormValueProvider(ModelBindingExecutionContext)))
             {
+                if (dataObject.Name == "Bob")
+                {
+                    System.Diagnostics.Debugger.Break();
+                }
                 target.InnerText = String.Format("Name: {0}, City: {1}",
                 dataObject.Name, dataObject.City);
             }
