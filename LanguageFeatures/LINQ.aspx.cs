@@ -100,7 +100,7 @@ public partial class LanguageFeatures_LINQ : System.Web.UI.Page
         return result.ToString();
     }
     ////Using non-deferred LINQ extension methods
-    protected string GetMessage()
+    protected string GetMessage4()
     {
         Product[] products = {
             new Product {Name = "Kayak", Category = "Watersports", Price = 275M},
